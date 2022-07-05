@@ -13,6 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/airport")
 public class AirportController {
+    @GetMapping
+    public ResponseEntity<?> hola(){
+        return ResponseEntity.ok().body("AIRPORT CONTROLLER");
+    }
+
     @Autowired
     private AirportService airportService;
 

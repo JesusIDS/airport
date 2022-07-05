@@ -13,6 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/language")
 public class LanguageController {
+    @GetMapping
+    public ResponseEntity<?> hola(){
+        return ResponseEntity.ok().body("LANGUAGE CONTROLLER");
+    }
+
     @Autowired
     private LanguageService languageService;
 

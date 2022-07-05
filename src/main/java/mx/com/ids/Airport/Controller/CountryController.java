@@ -13,6 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/country")
 public class CountryController {
+    @GetMapping
+    public ResponseEntity<?> hola(){
+        return ResponseEntity.ok().body("COUNTRY CONTROLLER");
+    }
+
     @Autowired
     private CountryService countryService;
 

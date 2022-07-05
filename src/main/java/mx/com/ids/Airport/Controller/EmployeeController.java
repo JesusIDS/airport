@@ -14,6 +14,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+    @GetMapping
+    public ResponseEntity<?> hola(){
+        return ResponseEntity.ok().body("EMPLOYEE CONTROLLER");
+    }
+
     @Autowired
     private EmployeeService employeeService;
 
