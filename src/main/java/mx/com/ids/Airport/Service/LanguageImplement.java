@@ -55,4 +55,9 @@ public class LanguageImplement implements LanguageService{
             throw new ResourceNotFoundException("Record not found with id : " + id);
         }
     }
+
+    @Override
+    public Language createLanguage(Language language) {
+        return this.languageRep.save(language);
+    }
 }

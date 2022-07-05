@@ -9,4 +9,5 @@ public interface LanguageService {
     List<Language> findAll();
     Language updateLanguage(Language language);
     void deleteLanguage(long id);
+    Language createLanguage(Language language);
 }

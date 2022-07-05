@@ -18,8 +18,9 @@ public class Language {
     private String code;
     private String name;
 
-    @ManyToMany
-    Set<Employee> speaks;
+    @ManyToOne()
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public long getId() {
         return id;
@@ -45,11 +46,7 @@ public class Language {
         this.name = name;
     }
 
-    public Set<Employee> getSpeaks() {
-        return speaks;
-    }
-
-    public void setSpeaks(Set<Employee> speaks) {
-        this.speaks = speaks;
+    public Language(String name) {
+        this.name = name;
     }
 }

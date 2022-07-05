@@ -19,11 +19,12 @@ public class Employee {
     private String surname;
     private String firstname;
 
-    @OneToOne(mappedBy = "employee")
-    private Country country;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Language> languages;
 
-    @ManyToMany
-    Set<Language> languages;
+    @ManyToOne()
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     public long getId() {
         return id;
@@ -49,19 +50,8 @@ public class Employee {
         this.firstname = firstname;
     }
 
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public Set<Language> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(Set<Language> languages) {
-        this.languages = languages;
+    public Employee(String surname, String firstname) {
+        this.surname = surname;
+        this.firstname = firstname;
     }
 }

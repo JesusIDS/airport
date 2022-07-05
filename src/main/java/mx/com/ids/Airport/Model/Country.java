@@ -18,13 +18,11 @@ public class Country {
     private String code;
     private String name;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Airport> airports;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_employee", insertable = false,
-            updatable = false, referencedColumnName = "id")
-    private Employee employee;
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Employee> employees;
 
     public long getId() {
         return id;
@@ -50,19 +48,7 @@ public class Country {
         this.name = name;
     }
 
-    public List<Airport> getAirports() {
-        return airports;
-    }
-
-    public void setAirports(List<Airport> airports) {
-        this.airports = airports;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public Country(String name) {
+        this.name = name;
     }
 }

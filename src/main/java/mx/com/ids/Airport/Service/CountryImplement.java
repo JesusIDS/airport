@@ -55,4 +55,9 @@ public class CountryImplement implements CountryService{
             throw new ResourceNotFoundException("Record not found with id : " + id);
         }
     }
+
+    @Override
+    public Country createCountry(Country country) {
+        return this.countryRep.save(country);
+    }
 }

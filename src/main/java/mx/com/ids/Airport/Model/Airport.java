@@ -15,9 +15,8 @@ public class Airport {
     private long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "id_country", insertable = false,
-            updatable = false)
+    @ManyToOne()
+    @JoinColumn(name = "country_id")
     private Country country;
 
     public long getId() {
@@ -42,5 +41,9 @@ public class Airport {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Airport(String name) {
+        this.name = name;
     }
 }
