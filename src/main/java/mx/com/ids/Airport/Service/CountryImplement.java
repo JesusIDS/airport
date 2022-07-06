@@ -34,15 +34,15 @@ public class CountryImplement implements CountryService{
 
     @Override
     public Country updateCountry(Country country) {
-        Optional<Country> countryDb = this.countryRep.findById(country.getId());
+        Optional<Country> countryDb = this.countryRep.findById(country.getCountry_id());
         if (countryDb.isPresent()) {
             Country countryUpdate = countryDb.get();
-            countryUpdate.setId(country.getId());
+            countryUpdate.setCountry_id(country.getCountry_id());
             countryUpdate.setCode(country.getCode());
             countryUpdate.setName(country.getName());
             return countryUpdate;
         } else {
-            throw new ResourceNotFoundException("Record not found with id : " + country.getId());
+            throw new ResourceNotFoundException("Record not found with id : " + country.getCountry_id());
         }
     }
 

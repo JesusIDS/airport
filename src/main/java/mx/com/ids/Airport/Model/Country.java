@@ -14,22 +14,26 @@ import java.util.List;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long country_id;
     private String code;
     private String name;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Airport> airports;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "country_id")
+    private List<Airport> airportsCountry;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Employee> employees;
+    @OneToOne(mappedBy = "countryWork", cascade = CascadeType.ALL)
+    private Employee employee;
 
-    public long getId() {
-        return id;
+    public Country() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getCountry_id() {
+        return country_id;
+    }
+
+    public void setCountry_id(long country_id) {
+        this.country_id = country_id;
     }
 
     public String getCode() {
@@ -48,7 +52,19 @@ public class Country {
         this.name = name;
     }
 
-    public Country(String name) {
-        this.name = name;
+    public List<Airport> getAirportsCountry() {
+        return airportsCountry;
+    }
+
+    public void setAirportsCountry(List<Airport> airportsCountry) {
+        this.airportsCountry = airportsCountry;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -2,7 +2,6 @@ package mx.com.ids.Airport.Model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Modelo de entidad 'employee'
@@ -15,23 +14,30 @@ import java.util.Set;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long employee_id;
     private String surname;
     private String firstname;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "languages_speaks",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id")
+    )
+    private List<Language> languageSpeaks;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Language> languages;
-
-    @ManyToOne()
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "country_id")
-    private Country country;
+    private Country countryWork;
 
-    public long getId() {
-        return id;
+    public Employee() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(long employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getSurname() {
@@ -50,8 +56,19 @@ public class Employee {
         this.firstname = firstname;
     }
 
-    public Employee(String surname, String firstname) {
-        this.surname = surname;
-        this.firstname = firstname;
+    public List<Language> getLanguageSpeaks() {
+        return languageSpeaks;
+    }
+
+    public void setLanguageSpeaks(List<Language> languageSpeaks) {
+        this.languageSpeaks = languageSpeaks;
+    }
+
+    public Country getCountryWork() {
+        return countryWork;
+    }
+
+    public void setCountryWork(Country countryWork) {
+        this.countryWork = countryWork;
     }
 }

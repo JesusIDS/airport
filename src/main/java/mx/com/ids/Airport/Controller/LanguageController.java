@@ -37,7 +37,7 @@ public class LanguageController {
 
     @PutMapping("/update_language/{id}")
     public ResponseEntity<Language> updateLanguage(@PathVariable long id, @RequestBody Language language) {
-        language.setId(id);
+        language.setLanguage_id(id);
         return ResponseEntity.ok().body(this.languageService.updateLanguage(language));
     }
 

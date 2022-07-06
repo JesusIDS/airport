@@ -37,7 +37,7 @@ public class AirportController {
 
     @PutMapping("/update_airport/{id}")
     public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody Airport airport) {
-        airport.setId(id);
+        airport.setAirport_id(id);
         return ResponseEntity.ok().body(this.airportService.updateAirport(airport));
     }
 

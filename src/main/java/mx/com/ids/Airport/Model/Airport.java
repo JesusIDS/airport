@@ -12,19 +12,22 @@ import javax.persistence.*;
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long airport_id;
     private String name;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "country_id")
     private Country country;
 
-    public long getId() {
-        return id;
+    public Airport() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getAirport_id() {
+        return airport_id;
+    }
+
+    public void setAirport_id(long airport_id) {
+        this.airport_id = airport_id;
     }
 
     public String getName() {
@@ -41,9 +44,5 @@ public class Airport {
 
     public void setCountry(Country country) {
         this.country = country;
-    }
-
-    public Airport(String name) {
-        this.name = name;
     }
 }

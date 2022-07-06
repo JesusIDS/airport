@@ -1,7 +1,7 @@
 package mx.com.ids.Airport.Model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Modelo de entidad 'language'
@@ -14,20 +14,22 @@ import java.util.Set;
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long language_id;
     private String code;
     private String name;
 
-    @ManyToOne()
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @ManyToMany(mappedBy = "languageSpeaks", cascade = CascadeType.PERSIST)
+    private List<Employee> speaks;
 
-    public long getId() {
-        return id;
+    public Language() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getLanguage_id() {
+        return language_id;
+    }
+
+    public void setLanguage_id(long language_id) {
+        this.language_id = language_id;
     }
 
     public String getCode() {
@@ -46,7 +48,11 @@ public class Language {
         this.name = name;
     }
 
-    public Language(String name) {
-        this.name = name;
+    public List<Employee> getSpeaks() {
+        return speaks;
+    }
+
+    public void setSpeaks(List<Employee> speaks) {
+        this.speaks = speaks;
     }
 }
