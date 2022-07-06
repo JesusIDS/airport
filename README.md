@@ -26,3 +26,5 @@ metodo Post y un Json con el siguiente formato:
 ]
 }
 }
+En caso de error en el despliegue del servidor puedes
+cambiar el puerto en el archivo application.properties
