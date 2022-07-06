@@ -9,5 +9,4 @@ public interface AirportService {
     List<Airport> findAll();
     Airport updateAirport(Airport airport);
     void deleteAirport(long id);
-    Airport createAirport(Airport airport);
 }

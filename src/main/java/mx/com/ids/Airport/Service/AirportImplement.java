@@ -55,8 +55,4 @@ public class AirportImplement implements AirportService {
         }
     }
 
-    @Override
-    public Airport createAirport(Airport airport) {
-        return this.airportRep.save(airport);
-    }
 }

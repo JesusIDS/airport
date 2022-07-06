@@ -9,5 +9,4 @@ public interface CountryService {
     List<Country> findAll();
     Country updateCountry(Country country);
     void deleteCountry(long id);
-    Country createCountry(Country country);
 }
